@@ -1,0 +1,73 @@
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+// .noTransition {
+//   * {
+//     transition-property: none !important;
+//     transform: none !important;
+//     animation: none !important;
+//   }
+// }
+
+
+.delay-05s { animation-delay: 0.5s; }
+.delay-1s { animation-delay: 1s; }
+.delay-15s { animation-delay: 1.5s; }
+.delay-2s { animation-delay: 2s; }
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0;}
+}
+@-webkit-keyframes changeBack {
+    0% { background-color: green; }
+    25% { background-color: red; }
+    50% { background-color: blue; }
+    75% { background-color: violet; }
+    100% { background-color: yellow; }
+}

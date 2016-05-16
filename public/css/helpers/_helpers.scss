@@ -1,0 +1,229 @@
+@import 'variables';
+
+
+@import 'helpers/float';
+@import 'helpers/clearfix';
+
+@import 'helpers/animations';
+
+@import 'helpers/align';
+@import 'helpers/width-height';
+@import 'helpers/display';
+
+
+@import 'helpers/colors';
+@import 'helpers/backgrounds';
+
+
+@import 'helpers/typography';
+@import 'helpers/lists';
+@import 'helpers/border';
+@import 'helpers/visibility';
+@import 'helpers/border-radius';
+
+
+@import 'helpers/margin';
+@import 'helpers/padding';
+
+.blue {
+    color:$loader;
+}
+
+/* ---------------------------------------------------------
+   Preloader
+   ---------------------------------------------------------*/
+$preloderSize: 40px;
+.preloader {
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    // background:#fff;
+    z-index:999;
+    .spinner {
+        width:$preloderSize;
+        height:$preloderSize;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin:0-($preloderSize/2) 0 0 0-($preloderSize/2);
+        .double-bounce1, 
+        .double-bounce2 {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: $loader;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: preloader-bounce 2.0s infinite ease-in-out;
+        }
+
+        .double-bounce2 {
+          animation-delay: -1.0s;
+        }
+
+    }
+}
+
+.img-responsive {
+    max-width:100%;
+}
+.wow {
+    visibility: hidden;
+}
+
+@keyframes preloader-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+  }
+}
+
+
+
+
+body {
+    
+    &::after {
+
+        /* dark overlay layer - visible when we fire .cd-quick-view */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(#47374e, .8);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s 0s, visibility 0s .3s;
+        content: '';
+    }
+
+    &.overlay-layer {
+       overflow: hidden;        
+        &::after {
+            visibility: visible;
+            opacity: 1;
+            z-index:99;
+            -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+            -moz-transition: opacity .3s 0s, visibility 0s 0s;
+            transition: opacity .3s 0s, visibility 0s 0s;
+            content: '';    
+        }        
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.medium-insert-images {
+    text-align: center;
+    figure {
+         margin: 0;
+         display: block; 
+         img {
+             max-width: 100%;
+             margin-top: 1em;
+             vertical-align: top; 
+         }
+         &:first-child {
+             img {
+                 margin-top: 0;
+             }
+         }
+    }
+    &.medium-insert-images-left {
+        max-width: 33.33%;
+        float: left;
+        margin: 0 30px 20px 0;
+    }
+    &.medium-insert-images-right {
+        max-width: 33.33%;
+        float: right;
+        margin: 0 0 20px 30px;
+    }
+    &.medium-insert-images-grid {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0.5em -0.5em;
+        figure {
+            width: 33.33%;
+            display: inline-block;
+            img {
+                max-width: calc(100% - 1em);
+                margin: 0.5em;
+            }
+        }
+    }
+}
+
+.medium-insert-embeds {
+    text-align: center;
+    margin: 1em 0;
+    position: relative;
+    iframe {
+        margin: 0 auto !important;
+    }
+    div {
+        margin: 0 auto !important;
+    }
+    &.medium-insert-embeds-left {
+        width: 33.33%;
+        float: left;
+        margin: 0 30px 20px 0;
+    }
+    &.medium-insert-embeds-right {
+        width: 33.33%;
+        float: right;
+        margin: 0 0 20px 30px;
+    }
+}
+
+.medium-insert-images, .medium-insert-embeds {
+    figure {
+        position: relative;
+        figcaption {
+            position: relative;
+            z-index: 1;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+            color: #ccc;
+            font-size: 0.8em;
+            font-style: italic;
+            outline: 0 solid transparent;
+            &:focus {
+                outline: 0 solid transparent;
+            }
+        }
+    }
+}
+
+
+// Backwards copatibility with v0.*
+
+.mediumInsert {
+    @extend .medium-insert-images;
+}
+
+.mediumInsert.small {
+    @extend .medium-insert-images.medium-insert-images-left;
+}
+
+.mediumInsert-embeds {
+    @extend .medium-insert-embeds;
+}
