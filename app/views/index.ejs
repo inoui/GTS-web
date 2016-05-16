@@ -1,14 +1,68 @@
 <% include header %>
 
-
 <div class="container">
-
-    
-
+  <p class="topLink"><a href="http://suisse.com">suisse.com</a></p>
+  <div class="top-image-c">
+    <p class="hashtag">#<span>amoureux</span>dela<span>suisse</span></p>
+    <h1><span>Jeux-concours</span> Le grand tour de Suisse</h1>   
+    <img src="/images/suisse-logo.jpg" alt="Suisse" class="suisse-logo" />
+  </div>
+<div class="promo">
+  4 séjours avec <br>
+  tgv et voiture <br>
+  de location & <br>
+  3X2 swiss travel <br>
+  pass à gagner!
 </div>
+<div class="main-content">
+  <p class="merci">
+    Merci de compléter les champs ci-dessous afin de confirmer votre <br>
+    participation à notre tirage au sort d'ici au 29 mai 2016 à minuit!
+  </p>
+  <form action="/" method="post">
+    <div class="fl">
+      <label for="nom"><span>Nom</span> 
+        <input type="text" name="nom" id="nom">
+      </label>
+      <label for="prenom"><span>Prénome</span>
+        <input type="text" name="prenom" id="prenom">
+      </label>
+      <label for="email"><span>Email</span>
+        <input type="email" name="email" id="email">
+      </label>
+    </div>
+    <div class="fr">
+      <label for="telephone"><span>Téléphone</span>
+        <input type="tel" name="telephone" id="telephone">
+      </label>
+      <label for="codepostal"><span>Code postal</span>
+        <input type="number" name="codepostal" id="codepostal">
+      </label>   
+    </div>
 
-
-  <h1><%-title %></h1>
-  <p>Welcome to <%-title %></p>
-
+    <div class="check-l clearfix">
+      <label for="marketing">
+        <input type="checkbox" name="marketing" id="marketing">
+        Je souhaite recevoir des informations de la part de Suisse Tourisme et de ses partenaires
+      </label>
+      <label for="reglement">
+        <input type="checkbox" name="reglement" id="reglement">
+        J'accepte <a href="/reglement">réglement du jeu</a>
+      </label>   
+    </div>
+    <div class="submit-c">
+      <input type="submit" value="VALIDER MA PARTICIPATION" class="submit">  
+    </div>
+    
+  </form>
+  <div class="a-gagner">
+    <h3>à gagner</h3>
+    <a href="#"><img src="/images/leman.jpg" alt="image"><span><span>></span> 1 séjour dans la Région de Léman</span></a>
+    <a href="#"><img src="/images/berne.jpg" alt="image"><span><span>></span> 1 séjour dans la Région de Léman</span></a>
+    <a href="#"><img src="/images/gruyere.jpg" alt="image"><span><span>></span> 1 séjour dans la Région de Léman</span></a>
+    <a href="#"><img src="/images/leman.jpg" alt="image"><span><span>></span> 1 séjour dans la Région de Léman</span></a>
+    <a href="#"><img src="/images/leman.jpg" alt="image"><span><span>></span> 1 séjour dans la Région de Léman</span></a>
+  </div>
+  </div>
+</div>
 <% include footer %>

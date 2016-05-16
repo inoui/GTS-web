@@ -961,7 +961,7 @@ th {
   font-style: normal; }
 body {
   font-family: "helveticaNeueLt";
-  color: #ffffff;
+  color: #a9a4a0;
   font-size: 12px;
   line-height: 18px;
   font-size: 1.2rem;
@@ -1028,11 +1028,12 @@ h6 {
   line-height: 1.8rem; }
 
 a {
-  color: #ffffff;
+  color: #95a5a6;
   text-decoration: none;
   transition: opacity .5s ease-out; }
   a:hover {
-    opacity: .8; }
+    opacity: .8;
+    text-decoration: underline; }
 
 .separate {
   border: none;
@@ -1225,3 +1226,125 @@ html {
 
 body {
   background-color: #fff; }
+
+.container {
+  width: 950px;
+  margin: 20px auto;
+  position: relative; }
+  .container .top-image-c {
+    background-color: #41738a;
+    position: relative;
+    padding: 30px 70px 160px; }
+
+footer {
+  background-color: #d2d2d2;
+  min-height: 255px;
+  padding-top: 10px; }
+
+.topLink a {
+  text-transform: capitalize;
+  font-family: "helveticaNeueBd"; }
+
+.top-image-c .suisse-logo {
+  position: absolute;
+  right: 0;
+  top: -20px; }
+.top-image-c .hashtag {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 22px; }
+  .top-image-c .hashtag span {
+    font-family: "helveticaNeueBd"; }
+.top-image-c h1 {
+  font-size: 34px;
+  text-align: left;
+  font-weight: bold; }
+  .top-image-c h1 span {
+    display: block;
+    font-family: "helveticaNeueLt"; }
+
+.promo {
+  color: #ffffff;
+  background-color: red;
+  text-transform: uppercase;
+  border: 3px solid #ffffff;
+  width: 190px;
+  height: 190px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  font-family: "helveticaNeueBd";
+  border-radius: 50%;
+  padding: 45px 0;
+  position: absolute;
+  right: 50px;
+  top: 260px;
+  -webkit-box-shadow: -5px 5px 10px 0px #666666;
+  -moz-box-shadow: -5px 5px 10px 0px #666666;
+  box-shadow: -5px 5px 10px 0px #666666; }
+
+.merci {
+  color: #000;
+  font-size: 25px;
+  margin: 20px 0;
+  line-height: 30px; }
+
+form label {
+  width: 414px;
+  font-size: 16px;
+  display: block;
+  color: #000; }
+  form label span {
+    padding: 15px 10px 10px;
+    display: inline-block; }
+  form label input:not([type=checkbox]) {
+    background-color: #f9f9f9;
+    line-height: 50px;
+    width: 100%;
+    border: 0; }
+  form label input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 0; }
+  form label input::-webkit-outer-spin-button,
+  form label input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+form .fr {
+  float: right; }
+form .fl {
+  float: left; }
+form .check-l {
+  clear: both; }
+  form .check-l label {
+    margin: 10px 0;
+    width: 100%;
+    font-size: 14px;
+    vertical-align: top; }
+form .submit-c {
+  text-align: center; }
+  form .submit-c .submit {
+    background-color: red;
+    color: #ffffff;
+    font-family: "helveticaNeueBd";
+    padding: 10px 20px;
+    font-size: 20px; }
+
+footer {
+  text-align: center; }
+  footer h3 {
+    color: #000;
+    font-family: "helveticaNeueLt";
+    font-size: 16px; }
+
+.a-gagner a {
+  display: inline-block;
+  width: 185px; }
+  .a-gagner a > span {
+    display: block;
+    color: #000;
+    margin-top: 10px;
+    font-size: 14px; }
+    .a-gagner a > span span {
+      color: red; }
