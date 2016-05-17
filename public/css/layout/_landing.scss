@@ -2,9 +2,14 @@
     a{
         text-transform: capitalize;
         font-family: $sansserifBold;
+        font-size: 1.063em;
     }
 }
 .top-image-c{
+    background: #41738a url('/images/bg-sky.jpg') no-repeat left top;
+    position: relative;
+    padding: 70px 70px 140px;
+    min-height: 390px;
     .suisse-logo{
         position: absolute;
         right: 0;
@@ -13,13 +18,15 @@
     .hashtag{
         color: $white;
         text-transform: uppercase;
-        font-size: 22px;
+        font-size: 1.45em;
+        margin-top: 0;
         span{
             font-family: $sansserifBold;
         }
     }
     h1{
-        font-size: 34px;
+        font-size: 3em;
+        line-height: 1.43em;
         text-align: left;
         font-weight: bold;
         span{
@@ -42,11 +49,16 @@
     border-radius: 50%;
     padding: 45px 0;
     position: absolute;
-    right: 50px;
+    right: 70px;
     top:260px;
     -webkit-box-shadow: -5px 5px 10px 0px rgba(102,102,102,1);
     -moz-box-shadow: -5px 5px 10px 0px rgba(102,102,102,1);
     box-shadow: -5px 5px 10px 0px rgba(102,102,102,1);
+}
+.travel-pass{
+    position: absolute;
+    right: 15px;
+    top:360px;
 }
 .merci{
     color: #000;
@@ -60,6 +72,10 @@ form{
         font-size: 16px;
         display: block;
         color: #000;
+        a{
+            color: #000;
+            text-decoration: underline;
+        }
         span{
             padding: 15px 10px 10px;
             display: inline-block;
@@ -116,11 +132,26 @@ footer{
         font-family: $sansserif;
         font-size: 16px;
     }
+    img{
+        margin-left: 50px;
+        margin-bottom: 30px;
+        &:first{
+            margin-left: 0
+        }
+    }
 }
 .a-gagner{
+    margin-top: 50px;
+    h3{
+        color: red;
+        text-transform: uppercase;
+        font-family: $sansserif;
+        font-size: 2.1em;
+    }
     a{
         display: inline-block;
         width: 185px;
+        vertical-align: top;
         &>span{
             display: block;
             color:#000;

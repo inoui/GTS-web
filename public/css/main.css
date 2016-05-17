@@ -1231,10 +1231,6 @@ body {
   width: 950px;
   margin: 20px auto;
   position: relative; }
-  .container .top-image-c {
-    background-color: #41738a;
-    position: relative;
-    padding: 30px 70px 160px; }
 
 footer {
   background-color: #d2d2d2;
@@ -1243,25 +1239,33 @@ footer {
 
 .topLink a {
   text-transform: capitalize;
-  font-family: "helveticaNeueBd"; }
+  font-family: "helveticaNeueBd";
+  font-size: 1.063em; }
 
-.top-image-c .suisse-logo {
-  position: absolute;
-  right: 0;
-  top: -20px; }
-.top-image-c .hashtag {
-  color: #ffffff;
-  text-transform: uppercase;
-  font-size: 22px; }
-  .top-image-c .hashtag span {
-    font-family: "helveticaNeueBd"; }
-.top-image-c h1 {
-  font-size: 34px;
-  text-align: left;
-  font-weight: bold; }
-  .top-image-c h1 span {
-    display: block;
-    font-family: "helveticaNeueLt"; }
+.top-image-c {
+  background: #41738a url("/images/bg-sky.jpg") no-repeat left top;
+  position: relative;
+  padding: 70px 70px 140px;
+  min-height: 390px; }
+  .top-image-c .suisse-logo {
+    position: absolute;
+    right: 0;
+    top: -20px; }
+  .top-image-c .hashtag {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 1.45em;
+    margin-top: 0; }
+    .top-image-c .hashtag span {
+      font-family: "helveticaNeueBd"; }
+  .top-image-c h1 {
+    font-size: 3em;
+    line-height: 1.43em;
+    text-align: left;
+    font-weight: bold; }
+    .top-image-c h1 span {
+      display: block;
+      font-family: "helveticaNeueLt"; }
 
 .promo {
   color: #ffffff;
@@ -1277,11 +1281,16 @@ footer {
   border-radius: 50%;
   padding: 45px 0;
   position: absolute;
-  right: 50px;
+  right: 70px;
   top: 260px;
   -webkit-box-shadow: -5px 5px 10px 0px #666666;
   -moz-box-shadow: -5px 5px 10px 0px #666666;
   box-shadow: -5px 5px 10px 0px #666666; }
+
+.travel-pass {
+  position: absolute;
+  right: 15px;
+  top: 360px; }
 
 .merci {
   color: #000;
@@ -1294,6 +1303,9 @@ form label {
   font-size: 16px;
   display: block;
   color: #000; }
+  form label a {
+    color: #000;
+    text-decoration: underline; }
   form label span {
     padding: 15px 10px 10px;
     display: inline-block; }
@@ -1337,14 +1349,101 @@ footer {
     color: #000;
     font-family: "helveticaNeueLt";
     font-size: 16px; }
+  footer img {
+    margin-left: 50px;
+    margin-bottom: 30px; }
+    footer img:first {
+      margin-left: 0; }
 
-.a-gagner a {
-  display: inline-block;
-  width: 185px; }
-  .a-gagner a > span {
-    display: block;
-    color: #000;
-    margin-top: 10px;
-    font-size: 14px; }
-    .a-gagner a > span span {
-      color: red; }
+.a-gagner {
+  margin-top: 50px; }
+  .a-gagner h3 {
+    color: red;
+    text-transform: uppercase;
+    font-family: "helveticaNeueLt";
+    font-size: 2.1em; }
+  .a-gagner a {
+    display: inline-block;
+    width: 185px;
+    vertical-align: top; }
+    .a-gagner a > span {
+      display: block;
+      color: #000;
+      margin-top: 10px;
+      font-size: 14px; }
+      .a-gagner a > span span {
+        color: red; }
+
+/* iPhone 6 in portrait & landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .container {
+    width: 100%; }
+    .container .topLink {
+      margin-left: 10px; }
+    .container .top-image-c {
+      padding: 70px 20px 30px;
+      background-position: left bottom;
+      min-height: 320px; }
+      .container .top-image-c .suisse-logo {
+        max-width: 100px;
+        top: -35px; }
+      .container .top-image-c h1 {
+        font-size: 1.8em;
+        line-height: 1.4em; }
+    .container .promo {
+      width: 120px;
+      height: 120px;
+      font-size: 11px;
+      line-height: 13px;
+      text-align: center;
+      font-family: "helveticaNeueBd";
+      border-radius: 50%;
+      padding: 30px 0;
+      position: absolute;
+      right: 30px;
+      top: 250px; }
+    .container .travel-pass {
+      max-width: 100px;
+      top: 320px;
+      right: 15px; }
+    .container .merci {
+      color: #000;
+      font-size: 16px;
+      margin: 40px 0 20px;
+      line-height: 20px;
+      padding: 0 10px; }
+      .container .merci br {
+        display: none; }
+    .container form {
+      padding: 0 20px; }
+      .container form label {
+        width: 100%; }
+        .container form label span {
+          padding: 10px 10px 5px; }
+        .container form label input:not([type=checkbox]) {
+          height: 35px; }
+      .container form .fr {
+        float: none; }
+      .container form .fl {
+        float: none; }
+      .container form .submit {
+        margin-top: 20px; }
+
+  .a-gagner {
+    padding: 0 20px;
+    text-align: center; }
+    .a-gagner a {
+      width: 160px; }
+      .a-gagner a img {
+        max-width: 100%; }
+      .a-gagner a > span {
+        display: block;
+        color: #000;
+        margin-top: 10px;
+        font-size: 14px; }
+        .a-gagner a > span span {
+          color: red; }
+
+  footer img {
+    margin-left: 25px;
+    margin-bottom: 25px; } }

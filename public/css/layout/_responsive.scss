@@ -1,0 +1,99 @@
+ /* iPhone 6 in portrait & landscape */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .container{
+        width:100%;
+        
+        .topLink{
+            margin-left: 10px;
+        }
+        .top-image-c{
+            padding: 70px 20px 30px;
+            background-position: left bottom;
+            min-height: 320px;
+            .suisse-logo{
+                max-width: 100px;
+                top:-35px;
+            }
+            h1{
+                font-size: 1.8em;
+                line-height: 1.4em;
+            }
+        }
+        .promo{
+            width:120px;
+            height: 120px;
+            font-size: 11px;
+            line-height: 13px;
+            text-align: center;
+            font-family: $sansserifBold;
+            border-radius: 50%;
+            padding: 30px 0;
+            position: absolute;
+            right: 30px;
+            top:250px;
+        }
+        .travel-pass{
+            max-width: 100px;
+            top:320px;
+            right: 15px;
+        }
+        .merci{
+            color: #000;
+            font-size: 16px;
+            margin: 40px 0 20px;
+            line-height: 20px;
+            padding: 0 10px;
+            br{
+                display: none;
+            }
+        }
+        form{
+            padding: 0 20px;
+            label{
+                width: 100%;
+                span{
+                    padding: 10px 10px 5px;
+                }
+                input:not([type=checkbox]){
+                    height: 35px;
+                }
+            }
+            .fr{
+                float:none;
+            }
+            .fl{
+                float:none;
+            }
+            .submit{
+                margin-top: 20px;
+            }
+        }
+    }
+    .a-gagner{
+        padding: 0 20px;
+        text-align: center;
+        a{
+            width: 160px;
+            img{
+                max-width: 100%;
+            }
+            &>span{
+                display: block;
+                color:#000;
+                margin-top:10px;
+                font-size: 14px;
+                span{
+                    color:red;
+                }
+            }
+        }
+    }
+    footer{
+        img{
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+    }
+}
