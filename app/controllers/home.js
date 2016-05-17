@@ -91,54 +91,37 @@ router.post('/merci', function (req, res, next) {
 });
 
 router.post('/email', function (req, res, next) {
+
+console.log(req.body);
+
+
   var user = new User({
-        email: req.body.user.email,
-        newsletter: req.body.user.newsletter
+        email: req.body.email,
+        newsletter: req.body.newsletter ? 1:0
     });
-    user.save()
-    .then(
-      (newuser) =>{
-       return sendEmailer(newuser)
-      },
-      (err) => {
-          res.send(500, err.message);
-      }
-    ).then(
-        (newuser) => {
-            res.json({
-                user: newuser,
-                message: 'Success'
-            })
-        },
-        (err) => {
-            res.send(500, err.message);
-        }
-    )
+    user.save(function(err, usr){
+        sendEmailer(usr);
+        return res.status(200).json(user);
+    });
 });
 
 function sendEmailer(user) {
-  var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
-  var html = compiled({ _id : user._id, email : user.email });
 
-  return new Promise((res, rej) => {
+    var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
+    var html = compiled({ _id : user._id, email : user.email });
     var mailOptions={
-          from : "ali@forestwines.com",
-          to : user.email,
-          subject : "Your Subject",
-          text : "Merci!",
-          html : html
-      }
-      console.log(mailOptions);
+      from : "ali@forestwines.com",
+      to : user.email,
+      subject : "Your Subject",
+      text : "Merci!",
+      html : html
+     }
       smtpTransport.sendMail(mailOptions, function(error, response){
           if(error){
               console.log(error);
-              res("error: " + error);
           }else{
               console.log(response.response.toString());
               console.log("Message sent: " + response.message);
-              res(user);
           }
       });
-  })
-
 }
