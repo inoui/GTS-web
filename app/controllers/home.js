@@ -23,6 +23,12 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
+router.get('/emailer', function (req, res, next) {
+    res.render('emailer/emailer', {
+        _id : "dsfdsfdfdsdfdsfdsfds"
+    });
+});
+
 router.get('/', function (req, res, next) {
   var userId = req.query.id;
   var userData;
@@ -97,19 +103,19 @@ router.post('/email', function (req, res, next) {
         newsletter: req.body.newsletter ? 1:0
     });
     user.save(function(err, usr){
-        sendEmailer(usr);
+        sendEmailer(usr, req);
         return res.status(200).json(user);
     });
 });
 
-function sendEmailer(user) {
-
+function sendEmailer(user, req) {
+    var fullUrl = req.protocol + '://' + req.get('host');
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
-    var html = compiled({ _id : user._id, email : user.email });
+    var html = compiled({ _id : user._id, email : user.email, url: fullUrl });
     var mailOptions={
-      from : "ali@forestwines.com",
+      from : "tom@inoui.io",
       to : user.email,
-      subject : "Your Subject",
+      subject : "Jeux-concours - Le grand tour de Suisse",
       text : "Merci!",
       html : html
      }
