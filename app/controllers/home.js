@@ -92,9 +92,6 @@ router.post('/merci', function (req, res, next) {
 
 router.post('/email', function (req, res, next) {
 
-console.log(req.body);
-
-
   var user = new User({
         email: req.body.email,
         newsletter: req.body.newsletter ? 1:0
