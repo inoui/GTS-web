@@ -7,6 +7,7 @@ var express = require('express'),
   Article = mongoose.model('Article'),
   User = mongoose.model('User'),
   ejs = require('ejs'),
+  _ = require('lodash'),
   fs = require('fs');
 
 var smtpTransport = nodemailer.createTransport(smtpTransport({
@@ -23,78 +24,70 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-  var userId = req.query._id;
+  var userId = req.query.id;
   var userData;
   if(userId !== undefined){
     console.log("user _id is: "+userId);
     User.findById(userId, function (err, user) {
-      if (err) return err;
-      Article.find(function (err, articles) {
-        if (err) return next(err);
-        res.render('index', {
-          title: 'Jeux-concours - Le grand tour de Suisse',
-          email: user.email,
-          _id : user._id,
-          articles: articles
-        });
-      });
+    //   if (err) return err;
+        if (user) {
+            console.log(user);
+            res.render('index', {
+              title: 'Jeux-concours - Le grand tour de Suisse',
+              email: user.email,
+              id : user.id
+            });
+        } else {
+            res.render('index', {
+              title: 'Jeux-concours - Le grand tour de Suisse',
+              email: '',
+              id : null
+            });
+
+        }
     });
-  }else{
-      Article.find(function (err, articles) {
-        if (err) return next(err);
-          res.render('index', {
-          title: 'Jeux-concours - Le grand tour de Suisse',
-          email: '',
-          _id : '',
-          articles: articles
-        });
-      });
-  }
+} else {
+    res.render('index', {
+      title: 'Jeux-concours - Le grand tour de Suisse',
+      email: '',
+      id : null
+    });
+
+}
 
 });
 
 router.post('/merci', function (req, res, next) {
   console.log(req.body);
-  if(req.body._id !==''){
-    User.findById(req.body.user._id, function (err, doc){
-      var user = new User(req.body);
-      if (err) { return err; }
-      user.save()
-        .then(
-        (newuser) =>{
-          res.send(Article.find(function (err, articles) {
-            if (err) return next(err);
+  var userId = req.body.id;
+  console.log(userId);
+  if(userId && userId !== ''){
+      console.log("userId");
+      User.findById(userId, function (err, usr){
+          console.log(usr);
+
+          var updated = _.merge(usr, req.body);
+          updated.save(function(err, user) {
               res.render('thankyou', {
-              prenom: newuser.prenom,
-              articles: articles
-            });
-          }));
-        },
-        (err) => {
-            res.send(500, err.message);
-        }
-      )
-    });
-  }else{
-    delete req.body._id;
-      var user = new User(req.body);
-      if (err) { return err; }
-      user.save()
-        .then(
-        (newuser) =>{
-          res.send(Article.find(function (err, articles) {
-            if (err) return next(err);
-              res.render('thankyou', {
-              prenom: newuser.prenom,
-              articles: articles
-            });
-          }));
-        },
-        (err) => {
-            res.send(500, err.message);
-        }
-      )
+                title: 'Jeux-concours - Le grand tour de Suisse',
+                user:user
+              });
+          });
+      });
+  } else {
+      console.log("PASuserId");
+      User.create(req.body, function(err, user) {
+          console.log(err);
+          console.log(user);
+          res.render('thankyou', {
+            title: 'Jeux-concours - Le grand tour de Suisse',
+            user:user
+          });
+
+      });
   }
+
+
 });
 
 router.post('/email', function (req, res, next) {
@@ -126,7 +119,7 @@ router.post('/email', function (req, res, next) {
 function sendEmailer(user) {
   var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
   var html = compiled({ _id : user._id, email : user.email });
-  
+
   return new Promise((res, rej) => {
     var mailOptions={
           from : "ali@forestwines.com",

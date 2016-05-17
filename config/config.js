@@ -6,28 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'web'
+      name: 'totemsuisse-web'
     },
-    port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/web-development'
+    port: process.env.PORT || 3333,
+    db: 'mongodb://localhost/totemsuisse-web-development'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'web'
+      name: 'totemsuisse-web'
     },
     port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/web-test'
+    db: 'mongodb://localhost/totemsuisse-web-test'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'web'
+      name: 'totemsuisse-web'
     },
-    port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/web-production'
+    port: process.env.PORT || 8080,
+    db: 'mongodb://localhost/totemsuisse-web-production'
   }
 };
 

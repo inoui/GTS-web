@@ -3,6 +3,10 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema({
   email: String,
+  prenom: String,
+  nom: String,
+  telephone: String,
+  cp: String,
   newsletter: Boolean
 },
 {
@@ -15,4 +19,3 @@ UserSchema.virtual('date')
   });
 
 mongoose.model('User', UserSchema);
-

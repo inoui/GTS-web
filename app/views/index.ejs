@@ -4,7 +4,7 @@
   <p class="topLink"><a href="http://suisse.com">suisse.com</a></p>
   <div class="top-image-c">
     <p class="hashtag">#<span>amoureux</span>dela<span>suisse</span></p>
-    <h1><span>Jeux-concours</span> Le grand tour de Suisse</h1>   
+    <h1><span>Jeux-concours</span> Le grand tour de Suisse</h1>
     <img src="/images/suisse-logo.jpg" alt="Suisse" class="suisse-logo" />
   </div>
 <div class="promo">
@@ -20,9 +20,9 @@
     participation à notre tirage au sort d'ici au 29 mai 2016 à minuit!
   </p>
   <form action="/merci" method="post">
-  <input type="hidden" name="_id" value="<%= _id %>">
+  <input type="hidden" name="id" value="<%= id %>">
     <div class="fl">
-      <label for="nom"><span>Nom</span> 
+      <label for="nom"><span>Nom</span>
         <input type="text" name="nom" id="nom">
       </label>
       <label for="prenom"><span>Prénome</span>
@@ -38,23 +38,23 @@
       </label>
       <label for="codepostal"><span>Code postal</span>
         <input type="number" name="codepostal" id="codepostal">
-      </label>   
+      </label>
     </div>
 
     <div class="check-l clearfix">
       <label for="newsletter">
-        <input type="checkbox" name="newsletter" id="newsletter">
+        <input type="checkbox" name="newsletter" id="newsletter" value="1">
         Je souhaite recevoir des informations de la part de Suisse Tourisme et de ses partenaires
       </label>
       <label for="reglement">
         <input type="checkbox" name="reglement" id="reglement" checked>
         J'accepte <a href="/reglement">réglement du jeu</a>
-      </label>   
+      </label>
     </div>
     <div class="submit-c">
-      <input type="submit" value="VALIDER MA PARTICIPATION" class="submit">  
+      <input type="submit" value="VALIDER MA PARTICIPATION" class="submit">
     </div>
-    
+
   </form>
   <div class="a-gagner">
     <h3>à gagner</h3>
