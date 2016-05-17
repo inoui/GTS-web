@@ -19,7 +19,8 @@
     Merci de compléter les champs ci-dessous afin de confirmer votre <br>
     participation à notre tirage au sort d'ici au 29 mai 2016 à minuit!
   </p>
-  <form action="/" method="post">
+  <form action="/merci" method="post">
+  <input type="hidden" name="_id" value="<%= _id %>">
     <div class="fl">
       <label for="nom"><span>Nom</span> 
         <input type="text" name="nom" id="nom">
@@ -28,7 +29,7 @@
         <input type="text" name="prenom" id="prenom">
       </label>
       <label for="email"><span>Email</span>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" value="<%= email %>">
       </label>
     </div>
     <div class="fr">
@@ -41,12 +42,12 @@
     </div>
 
     <div class="check-l clearfix">
-      <label for="marketing">
-        <input type="checkbox" name="marketing" id="marketing">
+      <label for="newsletter">
+        <input type="checkbox" name="newsletter" id="newsletter">
         Je souhaite recevoir des informations de la part de Suisse Tourisme et de ses partenaires
       </label>
       <label for="reglement">
-        <input type="checkbox" name="reglement" id="reglement">
+        <input type="checkbox" name="reglement" id="reglement" checked>
         J'accepte <a href="/reglement">réglement du jeu</a>
       </label>   
     </div>
