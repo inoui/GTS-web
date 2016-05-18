@@ -23,11 +23,11 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/emailer', function (req, res, next) {
-    res.render('emailer/emailer', {
-        _id : "dsfdsfdfdsdfdsfdsfds"
-    });
-});
+// router.get('/emailer', function (req, res, next) {
+//     res.render('emailer/emailer', {
+//         _id : "dsfdsfdfdsdfdsfdsfds"
+//     });
+// });
 
 router.get('/', function (req, res, next) {
   var userId = req.query.id;
