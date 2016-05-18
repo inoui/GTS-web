@@ -5,11 +5,13 @@ var express = require('express'),
   mongoose = require('mongoose'),
   nodemailer = require('nodemailer'),
   smtpTransport = require("nodemailer-smtp-transport"),
-  Article = mongoose.model('Article'),
+  Winner = mongoose.model('Winner'),
   User = mongoose.model('User'),
   ejs = require('ejs'),
   _ = require('lodash'),
   fs = require('fs'),
+  key = 'cest la suisse et ca doit etre loonnngggg',
+  encryptor = require('simple-encryptor')(key),
   transporter = nodemailer.createTransport();
 
 module.exports = function (app) {
@@ -55,7 +57,7 @@ router.get('/reglement', function (req, res, next) {
 });
 
 router.post('/merci', function (req, res, next) {
-    
+
     var userId = req.body.id;
     if (userId && userId !== '') {
         User.findById(userId, function (err, usr) {
@@ -88,6 +90,38 @@ router.post('/email', function (req, res, next) {
         return res.status(200).json(user);
     });
 });
+
+
+
+router.get('/qr', function (req, res, next) {
+    var qr = req.query.qr;
+    console.log(qr);
+    var obj = encryptor.decrypt(qr);
+    console.log(obj);
+    Winner.find(obj, function (err, win) {
+
+        if (!win.length) {
+            Winner.create(obj, function() {
+                res.render('winner', {
+                    winner:true,
+                    title:"QR VERIFICATION"
+                });
+            });
+        } else {
+            res.render('winner', {
+                winner:false,
+                title:"QR VERIFICATION"
+            });
+
+        }
+    })
+});
+
+
+
+
+
+
 
 function sendEmailer(user, req) {
     var fullUrl = config.app.url;

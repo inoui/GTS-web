@@ -6,6 +6,7 @@ var config = {
   development: {
     root: rootPath,
     app: {
+      url:'http://grandtour.byzance.world',
       name: 'totemsuisse-web'
     },
     port: process.env.PORT || 3333,
