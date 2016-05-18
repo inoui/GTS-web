@@ -1315,7 +1315,8 @@ form {
       background-color: #f9f9f9;
       line-height: 50px;
       width: 100%;
-      border: 0; }
+      border: 0;
+      padding-left: 10px; }
     form label input[type=checkbox] {
       width: 20px;
       height: 20px;
