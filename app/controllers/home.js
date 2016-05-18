@@ -137,10 +137,7 @@ function sendEmailer(user, req) {
     transporter.sendMail(mailOptions, function (error, response) {
         if (error) {
             console.log(error);
-        } else {
-            console.log(response.response.toString());
-            console.log("Message sent: " + response.message);
-        }
+        } 
     });
     transporter.close();
 }
