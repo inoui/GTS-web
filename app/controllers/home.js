@@ -114,7 +114,7 @@ function sendEmailer(user, req) {
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
     var html = compiled({ _id : user._id, email : user.email, url: fullUrl });
     var mailOptions={
-      from : "tom@inoui.io",
+      from : "Grand Tour de Suisse <contact@grandtour.byzance.world>",
       to : user.email,
       subject : "Jeux-concours - Le grand tour de Suisse",
       text : "Merci!",
