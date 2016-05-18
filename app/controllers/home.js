@@ -95,7 +95,7 @@ router.post('/email', function (req, res, next) {
 
 router.get('/qr', function (req, res, next) {
     var qr = req.query.qr;
-    console.log(qr);
+    qr = require('querystring').unescape(qr);
     var obj = encryptor.decrypt(qr);
     console.log(obj);
     Winner.find(obj, function (err, win) {
@@ -137,7 +137,7 @@ function sendEmailer(user, req) {
     transporter.sendMail(mailOptions, function (error, response) {
         if (error) {
             console.log(error);
-        } 
+        }
     });
     transporter.close();
 }
