@@ -9,16 +9,8 @@ var express = require('express'),
   User = mongoose.model('User'),
   ejs = require('ejs'),
   _ = require('lodash'),
-  fs = require('fs');
-
-var smtpTransport = nodemailer.createTransport(smtpTransport({
-    host: "smtp.forestwines.com",
-    secureConnection: false,
-    auth: {
-        user: "ali@forestwines.com",
-        pass: "ma123lika"
-    }
-}));
+  fs = require('fs'),
+  transporter = nodemailer.createTransport();
 
 module.exports = function (app) {
     app.use('/', router);
@@ -108,7 +100,7 @@ function sendEmailer(user, req) {
         text: "Merci!",
         html: html
     }
-    smtpTransport.sendMail(mailOptions, function (error, response) {
+    transporter.sendMail(mailOptions, function (error, response) {
         if (error) {
             console.log(error);
         } else {
@@ -116,4 +108,5 @@ function sendEmailer(user, req) {
             console.log("Message sent: " + response.message);
         }
     });
+    transporter.close();
 }
