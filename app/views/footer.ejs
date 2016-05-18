@@ -9,5 +9,37 @@
     <img src="/images/footer-europcar.png" alt="Europcar">
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#formMerci').validate({
+            rules: {
+                nom: {
+                    required: true
+                },
+                prenom: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                nom: {
+                    required: "Champ requis"
+                },
+                prenom: {
+                    required: "Champ requis"
+                },
+                email: {
+                    required: "Champ requis",
+                    email: "L'adresse email doit être valide."
+                }
+            }
+        });
+
+    });
+</script>
 </body>
 </html>

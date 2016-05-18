@@ -1,14 +1,15 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 var express = require('express'),
-    router = express.Router(),
-    mongoose = require('mongoose'),
-    nodemailer = require('nodemailer'),
-    smtpTransport = require("nodemailer-smtp-transport"),
-    Article = mongoose.model('Article'),
-    User = mongoose.model('User'),
-    ejs = require('ejs'),
-    _ = require('lodash'),
-    fs = require('fs');
+  router = express.Router(),
+  config = require('../../config/config'),
+  mongoose = require('mongoose'),
+  nodemailer = require('nodemailer'),
+  smtpTransport = require("nodemailer-smtp-transport"),
+  Article = mongoose.model('Article'),
+  User = mongoose.model('User'),
+  ejs = require('ejs'),
+  _ = require('lodash'),
+  fs = require('fs');
 
 var smtpTransport = nodemailer.createTransport(smtpTransport({
     host: "smtp.forestwines.com",
@@ -22,12 +23,6 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
 module.exports = function (app) {
     app.use('/', router);
 };
-
-// router.get('/emailer', function (req, res, next) {
-//     res.render('emailer/emailer', {
-//         _id : "dsfdsfdfdsdfdsfdsfds"
-//     });
-// });
 
 router.get('/', function (req, res, next) {
     var userId = req.query.id;
@@ -61,15 +56,17 @@ router.get('/', function (req, res, next) {
 
 });
 
-router.post('/merci', function (req, res, next) {
-    console.log(req.body);
-    var userId = req.body.id;
-    console.log(userId);
-    if (userId && userId !== '') {
-        console.log("userId");
-        User.findById(userId, function (err, usr) {
-            console.log(usr);
+router.get('/reglement', function (req, res, next) {
+    res.render('terms-conditions', {
+        title: 'Reglements - Jeux-concours - Le grand tour de Suisse'
+    });
+});
 
+router.post('/merci', function (req, res, next) {
+    
+    var userId = req.body.id;
+    if (userId && userId !== '') {
+        User.findById(userId, function (err, usr) {
             var updated = _.merge(usr, req.body);
             updated.save(function (err, user) {
                 res.render('thankyou', {
@@ -79,19 +76,13 @@ router.post('/merci', function (req, res, next) {
             });
         });
     } else {
-        console.log("PASuserId");
         User.create(req.body, function (err, user) {
-            console.log(err);
-            console.log(user);
             res.render('thankyou', {
                 title: 'Jeux-concours - Le grand tour de Suisse',
                 user: user
             });
-
         });
     }
-
-
 });
 
 router.post('/email', function (req, res, next) {
@@ -107,11 +98,11 @@ router.post('/email', function (req, res, next) {
 });
 
 function sendEmailer(user, req) {
-    var fullUrl = req.protocol + '://' + req.get('host');
+    var fullUrl = config.app.url;
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
     var html = compiled({ _id: user._id, email: user.email, url: fullUrl });
     var mailOptions = {
-        from: "tom@inoui.io",
+        from: "Grand Tour de Suisse <contact@grandtour.byzance.world>",
         to: user.email,
         subject: "Jeux-concours - Le grand tour de Suisse",
         text: "Merci!",
