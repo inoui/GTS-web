@@ -5,11 +5,13 @@ var express = require('express'),
   mongoose = require('mongoose'),
   nodemailer = require('nodemailer'),
   smtpTransport = require("nodemailer-smtp-transport"),
-  Article = mongoose.model('Article'),
+  Winner = mongoose.model('Winner'),
   User = mongoose.model('User'),
   ejs = require('ejs'),
   _ = require('lodash'),
   fs = require('fs'),
+  key = 'cest la suisse et ca doit etre loonnngggg',
+  encryptor = require('simple-encryptor')(key),
   transporter = nodemailer.createTransport();
 
 module.exports = function (app) {
@@ -55,7 +57,7 @@ router.get('/reglement', function (req, res, next) {
 });
 
 router.post('/merci', function (req, res, next) {
-    
+
     var userId = req.body.id;
     if (userId && userId !== '') {
         User.findById(userId, function (err, usr) {
@@ -89,6 +91,38 @@ router.post('/email', function (req, res, next) {
     });
 });
 
+
+
+router.get('/qr', function (req, res, next) {
+    var qr = req.query.qr;
+    qr = require('querystring').unescape(qr);
+    var obj = encryptor.decrypt(qr);
+    console.log(obj);
+    Winner.find(obj, function (err, win) {
+
+        if (!win.length) {
+            Winner.create(obj, function() {
+                res.render('winner', {
+                    winner:true,
+                    title:"QR VERIFICATION"
+                });
+            });
+        } else {
+            res.render('winner', {
+                winner:false,
+                title:"QR VERIFICATION"
+            });
+
+        }
+    })
+});
+
+
+
+
+
+
+
 function sendEmailer(user, req) {
     var fullUrl = config.app.url;
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
@@ -103,9 +137,6 @@ function sendEmailer(user, req) {
     transporter.sendMail(mailOptions, function (error, response) {
         if (error) {
             console.log(error);
-        } else {
-            console.log(response.response.toString());
-            console.log("Message sent: " + response.message);
         }
     });
     transporter.close();
