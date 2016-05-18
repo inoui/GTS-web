@@ -24,7 +24,8 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'totemsuisse-web'
+        url:'http://grandtour.byzance.world',
+        name: 'totemsuisse-web'
     },
     port: process.env.PORT || 8084,
     db: 'mongodb://localhost/totemsuisse-web-production'

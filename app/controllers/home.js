@@ -1,6 +1,7 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 var express = require('express'),
   router = express.Router(),
+  config = require('../config/config'),
   mongoose = require('mongoose'),
   nodemailer = require('nodemailer'),
   smtpTransport = require("nodemailer-smtp-transport"),
@@ -109,7 +110,7 @@ router.post('/email', function (req, res, next) {
 });
 
 function sendEmailer(user, req) {
-    var fullUrl = req.protocol + '://' + req.get('host');
+    var fullUrl = config.app.url;
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
     var html = compiled({ _id : user._id, email : user.email, url: fullUrl });
     var mailOptions={
