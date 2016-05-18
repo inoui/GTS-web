@@ -1368,16 +1368,16 @@ footer {
     text-transform: uppercase;
     font-family: "helveticaNeueLt";
     font-size: 2.1em; }
-  .a-gagner a {
+  .a-gagner span.wrap {
     display: inline-block;
     width: 185px;
     vertical-align: top; }
-    .a-gagner a > span {
+    .a-gagner span.wrap > span {
       display: block;
       color: #000;
       margin-top: 10px;
       font-size: 14px; }
-      .a-gagner a > span span {
+      .a-gagner span.wrap > span span {
         color: red; }
 
 .reglement {
