@@ -26,13 +26,13 @@ router.get('/', function (req, res, next) {
             //   if (err) return err;
             if (user) {
                 res.render('index', {
-                    title: 'Jeux-concours - Le grand tour de Suisse',
+                    title: 'Jeu-concours - Le Grand Tour de Suisse',
                     email: user.email,
                     id: user.id
                 });
             } else {
                 res.render('index', {
-                    title: 'Jeux-concours - Le grand tour de Suisse',
+                    title: 'Jeu-concours - Le Grand Tour de Suisse',
                     email: '',
                     id: null
                 });
@@ -41,7 +41,7 @@ router.get('/', function (req, res, next) {
         });
     } else {
         res.render('index', {
-            title: 'Jeux-concours - Le grand tour de Suisse',
+            title: 'Jeu-concours - Le Grand Tour de Suisse',
             email: '',
             id: null
         });
@@ -52,7 +52,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/reglement', function (req, res, next) {
     res.render('terms-conditions', {
-        title: 'Reglements - Jeux-concours - Le grand tour de Suisse'
+        title: 'Reglements - Jeu-concours - Le Grand Tour de Suisse'
     });
 });
 
@@ -64,7 +64,7 @@ router.post('/merci', function (req, res, next) {
             var updated = _.merge(usr, req.body);
             updated.save(function (err, user) {
                 res.render('thankyou', {
-                    title: 'Jeux-concours - Le grand tour de Suisse',
+                    title: 'Jeu-concours - Le Grand Tour de Suisse',
                     user: user
                 });
             });
@@ -72,7 +72,7 @@ router.post('/merci', function (req, res, next) {
     } else {
         User.create(req.body, function (err, user) {
             res.render('thankyou', {
-                title: 'Jeux-concours - Le grand tour de Suisse',
+                title: 'Jeu-concours - Le Grand Tour de Suisse',
                 user: user
             });
         });
@@ -128,9 +128,9 @@ function sendEmailer(user, req) {
     var compiled = ejs.compile(fs.readFileSync(__dirname + '/../views/emailer/emailer.ejs', 'utf8'));
     var html = compiled({ _id: user._id, email: user.email, url: fullUrl });
     var mailOptions = {
-        from: "Grand Tour de Suisse <contact@grandtour.byzance.world>",
+        from: "Grand Tour de Suisse <concours@grandtourdesuisse.fr>",
         to: user.email,
-        subject: "Jeux-concours - Le grand tour de Suisse",
+        subject: "Jeu-concours - Le Grand Tour de Suisse",
         text: "Merci!",
         html: html
     }
